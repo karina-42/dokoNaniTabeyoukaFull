@@ -7,7 +7,28 @@
     <title>どこ・何食べようか</title>
 </head>
 <body>
-    <h1>どこ・何食べようか</h1>
-    
+    <header>
+      <h1>どこ・何食べようか？</h1></header>
+        <section id="choice">
+          <section id="left">
+              <h1 class="title">おすすめのレストラン</h1>
+              <p>行きたいレストランを思い浮かびませんか？</p>
+              <p>食べたい料理を選んだらその料理のレストランのリストが現れます</p>
+              <form method="get">
+              <select id="selectFoodType" name="choice">
+                <% for (const i in dropdownValues) { %>
+                <option value="<%= dropdownValues[i] %>"><%= dropdownValues[i] %></option>
+                <% } %>
+              </select>
+            </form>
+            </section>
+          
+            <section id="right">
+              <h1 class="title">おすすめの食べ物</h1>
+              <p class="eat">食べたい料理を思い浮かびませんか？</p>
+              <p>ボタンを押すとランダムに料理をおすすめします！ それを使ってレストランを探してください</p>
+              <button id="random-food">押して</button>
+            </section>
+        </section>
 </body>
 </html>
