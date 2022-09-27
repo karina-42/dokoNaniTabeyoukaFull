@@ -25,11 +25,7 @@ app.use(express.json())
 app.use(methodOverride("_method"))
 
 //Setup Routes For Which The Server Is Listening
-app.use('/home', mainRoutes)
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html')
-})
+app.use('/', mainRoutes)
 
 //Server Running
 app.listen(process.env.PORT, ()=>{

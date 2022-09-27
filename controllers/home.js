@@ -2,7 +2,7 @@
 const Restaurant = require("../models/Restaurant")
 
 module.exports = {
-    getHome: async (req, res)=>{
+    getIndex: async (req, res)=>{
     try {
       //get Restaurant data
       const data = await Restaurant.find({})
@@ -16,7 +16,7 @@ module.exports = {
          return arr.indexOf(value) === index
       })
       //render the homepage and send the unique food keys array under the variable dropdownValues
-      res.render('home.ejs', {dropdownValues: uniqueFood})
+      res.render('index.ejs', {dropdownValues: uniqueFood})
     } catch (error) {
       console.log(error);
     }
