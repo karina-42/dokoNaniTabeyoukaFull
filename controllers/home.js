@@ -1,8 +1,8 @@
-const { Decimal128 } = require("mongodb")
+// const { Decimal128 foodKeys } = require("mongodb")
 const Restaurant = require("../models/Restaurant")
 
 module.exports = {
-    getIndex: async (req, res)=>{
+    getHome: async (req, res)=>{
     try {
       //get Restaurant data
       const data = await Restaurant.find({})
@@ -16,7 +16,7 @@ module.exports = {
          return arr.indexOf(value) === index
       })
       //render the homepage and send the unique food keys array under the variable dropdownValues
-      res.render('index.ejs', {dropdownValues: uniqueFood})
+      res.render('home.ejs', {dropdownValues: uniqueFood})
     } catch (error) {
       console.log(error);
     }
