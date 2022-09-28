@@ -1,17 +1,16 @@
 const Restaurant = require('../models/Restaurant.js')
 
 module.exports = {
-  addRestaurant: async (req, res) => {
+  getAddRestaurant: async (req, res) => {
     try {
       const restaurants = await Restaurant.find({})
-      console.log(restaurants);
       res.render('addRestaurant.ejs', {restaurants: restaurants})
       
     } catch (error) {
       console.log(error);
     }
   },
-  // addRestaurant: async (req, res) => {
+  // createRestaurant: async (req, res) => {
   //   try {
   //     await Restaurant.create({
   //       area: req.body.area,
