@@ -13,10 +13,10 @@ const RestaurantSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  firstTime: {
-    type: Boolean,
-    required: true,
-  },
+  // firstTime: {
+  //   type: Boolean,
+  //   required: true,
+  // },
   createdAt: {
     type: Date,
     default: Date.now,
