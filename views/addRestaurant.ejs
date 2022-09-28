@@ -9,15 +9,38 @@
 <body>
   <header><a href="/">メイン</a></header>
   <h1>current restaurants</h1>
-  <!-- <ul>
+  <ul>
     <% for (let i = 0; i < restaurants.length; i++) {%>
       <li>
-        <%= restaurants[i] %>
+        <p><%= restaurants[i].name %></p>
+        <p><%= restaurants[i].area %></p>
+        <p><%= restaurants[i].food %></p>
       </li>
     <% } %>
-  </ul> -->
+  </ul>
 
-  <h1>add restaurants</h1>
-  <form action="/addRestaurant/newRestaurant"></form>
+  <div class="mt-5">
+    <h1>Add a restaurant</h1>
+    <form action="/createRestaurant" method="POST">
+      <div class="mb-3">
+          <label for="title" class="form-label">Restaurant Name</label>
+          <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <div class="mb-3">
+        <label for="caption" class="form-label">Area</label>
+        <textarea class="form-control" id="area" name="area"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="caption" class="form-label">Food</label>
+        <textarea class="form-control" id="food" name="food"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" value="Upload">Submit Restaurant</button>
+    </form>
+  </div>
+
+  <!-- test button -->
+  <!-- <div><form action="/createRestaurant" method="GET">
+    <button type="submit">Submit</button>
+  </form></div> -->
 </body>
 </html>

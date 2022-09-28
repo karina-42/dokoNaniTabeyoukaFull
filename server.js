@@ -5,9 +5,10 @@ const methodOverride = require("method-override")
 const logger = require("morgan");
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
+// const restaurantRoutes = require("./routes/addRestaurant");
+const cors = require('cors')
 
-
-
+app.use(cors())
 //Use .env file in config folder
 require('dotenv').config({path: './config/.env'})
 
@@ -32,7 +33,8 @@ app.use(methodOverride("_method"))
 
 //Setup Routes For Which The Server Is Listening
 app.use('/', mainRoutes)
-// app.use('/addRestaurant', )
+// app.use('/createRestaurant', restaurantRoutes)
+
 
 //Server Running
 app.listen(process.env.PORT, ()=>{
