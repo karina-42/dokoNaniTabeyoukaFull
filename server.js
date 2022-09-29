@@ -5,7 +5,7 @@ const methodOverride = require("method-override")
 const logger = require("morgan");
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
-const restaurantRoutes = require("./routes/addRestaurant");
+const restaurantRoutes = require("./routes/restaurants");
 const cors = require('cors')
 
 app.use(cors())
@@ -33,7 +33,7 @@ app.use(methodOverride("_method"))
 
 //Setup Routes For Which The Server Is Listening
 app.use('/', mainRoutes)
-app.use('/addRestaurant', restaurantRoutes)
+app.use('/restaurants', restaurantRoutes)
 
 
 //Server Running

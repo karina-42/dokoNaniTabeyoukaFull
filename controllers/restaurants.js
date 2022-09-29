@@ -1,10 +1,10 @@
 const Restaurant = require('../models/Restaurant.js')
 
 module.exports = {
-  getAddRestaurant: async (req, res) => {
+  getRestaurants: async (req, res) => {
     try {
       const restaurants = await Restaurant.find({})
-      res.render('addRestaurant.ejs', {restaurants: restaurants})
+      res.render('restaurants.ejs', {restaurants: restaurants})
       
     } catch (error) {
       console.log(error);
@@ -17,12 +17,19 @@ module.exports = {
         food: req.body.food,
         name: req.body.name,
       })
-      res.redirect('/')
-      // res.send('ok')
+      res.redirect('/restaurants')
     } catch (error) {
       console.log(error);
     }
   },
+  deleteRestaurant: async (req, res) => {
+    try {
+      await Restaurant.findByIdAndRemove({_id: req.params.id})
+      res.redirect('/restaurants')
+    } catch (error) {
+      console.log(error);
+    }
+  }
   // test button
 //   testRestaurant: async (req, res) => {
 //     try {
