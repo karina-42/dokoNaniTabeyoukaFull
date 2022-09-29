@@ -22,6 +22,30 @@ module.exports = {
       console.log(error);
     }
   },
+  editRestaurant: async (req, res) => {
+    try {
+      const restaurant = await Restaurant.findById({_id: req.params.id})
+      console.log(restaurant.name);
+      res.render('edit', {restaurant: restaurant})
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  saveRestaurant: async (req, res) => {
+    try {
+      let saveData = {
+        $set: {
+          name: req.body.restaurantName,
+          area: req.body.restaurantArea,
+          food: req.body.restaurantFood
+        }
+      }
+      await Restaurant.updateOne({_id: req.body.restaurantId}, saveData)
+      res.redirect('/restaurants')
+    } catch (error) {
+      console.log(error);
+    }
+  },
   deleteRestaurant: async (req, res) => {
     try {
       await Restaurant.findByIdAndRemove({_id: req.params.id})

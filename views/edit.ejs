@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edit</title>
+</head>
+<body>
+  <h1>edit</h1>
+  <form action="/restaurants/save" method="POST">
+    <div class="restaurant-edit">
+        <div class="restaurant-name"><input type="text" name="restaurantName" value="<%= restaurant.name %>"></div>
+        <div class="restaurant-area"><input type="text" name="restaurantArea" value="<%= restaurant.area %>"></div>
+        <div class="restaurant-food"><input type="text" name="restaurantFood" value="<%= restaurant.food %>"></div>
+        <div class="menu-btn">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-primary" onclick="javascript:location.href='/restaurants';">Cancel</button>
+            <input type="hidden" name="restaurantId" value="<%= restaurant._id %>">
+        </div>
+    </div>
+</form>
+</body>
+</html>
