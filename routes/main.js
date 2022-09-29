@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const homeController = require('../controllers/home')
-const addRestaurantController = require('../controllers/addRestaurant')
+// const addRestaurantController = require('../controllers/addRestaurant')
 
 //button test endpoint
 // router.get('/createRestaurant', addRestaurantController.testRestaurant)
@@ -12,8 +12,8 @@ const addRestaurantController = require('../controllers/addRestaurant')
 // });
 
 router.get('/', homeController.getIndex)
-router.get('/addRestaurant', addRestaurantController.getAddRestaurant)
+// router.get('/addRestaurant', addRestaurantController.getAddRestaurant)
 //for some reason only works here
-router.post('/createRestaurant', addRestaurantController.createRestaurant)
+// router.post('/createRestaurant', addRestaurantController.createRestaurant)
 
 module.exports = router

@@ -1,15 +1,13 @@
-//doesn't work for some reason
+const express = require('express')
+const router = express.Router()
+const addRestaurantController = require('../controllers/addRestaurant')
 
-// const express = require('express')
-// const router = express.Router()
-// const addRestaurantController = require('../controllers/addRestaurant')
+//you already said the path is /addRestaurant in server.js so you don't need to put it here
+router.get('/', addRestaurantController.getAddRestaurant)
+//same thing, don't need to make it /addRestaurant/createRestaurant
+router.post('/createRestaurant', addRestaurantController.createRestaurant)
 
-// // router.get('/createRestaurant', addRestaurantController.testRestaurant)
-// router.post('/createRestaurant', addRestaurantController.createRestaurant)
 
-// // React test endpoint
-// router.get("/createRestaurant", (req, res) => {
-//   res.json({ message: "Hello from server!" });
-// });
 
-// module.exports = router
+
+module.exports = router
