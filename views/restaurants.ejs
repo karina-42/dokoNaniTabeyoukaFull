@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,7 @@
   <ul>
     <% for (let i = 0; i < restaurants.length; i++) {%>
       <li>
-        <p><%= restaurants[i].name %></p>
-        <p><%= restaurants[i].area %></p>
-        <p><%= restaurants[i].food %></p>
+        <p><%= restaurants[i].name %>, <%= restaurants[i].area %>, <%= restaurants[i].food %></p>
         <a href="/restaurants/<%= restaurants[i]._id %>">Edit</a> &nbsp; 
         <a href="/restaurants/deleteRestaurant/<%= restaurants[i]._id %>" onclick="return confirm('Are you sure you wish to delete this?');">Delete</a>
       </li>
