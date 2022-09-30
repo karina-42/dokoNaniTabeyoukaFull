@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レストラン</title>
+</head>
+<body>
+  <h1>このリストから選んでください！</h1>
+  <h2><%= title %></h2>
+  <ul>
+    <% for (let restaurant of choice) { %>
+    <li>
+      <p><%= restaurant.name %>, <%= restaurant.area %></p>
+    </li>
+  <% } %>
+  </ul>
+  <a href="/">違う食べ物食べたい</a>
+</body>
+</html>

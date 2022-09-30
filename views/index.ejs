@@ -17,17 +17,30 @@
             <p>ボタンを押すとランダムに料理をおすすめします！ それを使ってレストランを探してください</p>
             <button id="random-food">押して</button>
           </section>
+          <!-- dropdown -->
           <section id="bottom">
               <h1 class="title">おすすめのレストラン</h1>
               <p>行きたいレストランを思い浮かびませんか？</p>
               <p>食べたい料理を選んだらその料理のレストランのリストが現れます</p>
-              <form method="get">
-              <select id="selectFoodType" name="choice">
-                <% for (const i in dropdownValues) { %>
-                <option value="<%= dropdownValues[i] %>"><%= dropdownValues[i] %></option>
-                <% } %>
-              </select>
-            </form>
+              <form action="/pickFood" method="post">
+                <select id="selectFoodType" name="choice">
+                  <!-- Make an array of the food keys -->
+                  <% let foodKeys = [] %>
+                  <% for(let restaurant of data) { %>
+                    <% foodKeys.push(restaurant.food) %>
+                  <% } %>
+                  <!-- Filter the food keys so they don't repeat in the dropdown list -->
+                  <% let uniqueFood = foodKeys.filter((value, index, arr) => { %>
+                     <% return arr.indexOf(value) === index %>
+                  <% }) %>
+                  <!-- Display unique food items in dropdown box -->
+                  <% for (const i in uniqueFood) { %>
+                  <option value="<%= uniqueFood[i] %>"><%= uniqueFood[i] %></option>
+                  <% } %>
+                </select>
+                <input type="submit" value="Submit">
+              </form>
+           
             </section>
           
             
