@@ -2,11 +2,19 @@
 const Restaurant = require("../models/Restaurant")
 
 module.exports = {
-  getIndex: async (req, res)=>{
+  getIndex: async (req, res) => {
     try {
       //get Restaurant data
       const data = await Restaurant.find({})
       res.render('index.ejs', {data: data})
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  getRandomFood: async (req, res) => {
+    try {
+      const foods = await Restaurant.find({})
+      res.send(foods)
     } catch (error) {
       console.log(error);
     }
