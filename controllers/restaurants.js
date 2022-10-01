@@ -4,7 +4,7 @@ module.exports = {
   getRestaurants: async (req, res) => {
     try {
       const restaurants = await Restaurant.find({})
-      res.render('restaurants.ejs', {restaurants: restaurants})
+      res.render('restaurants.ejs', {title: 'レストラン', restaurants: restaurants})
       
     } catch (error) {
       console.log(error);

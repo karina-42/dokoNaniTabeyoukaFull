@@ -1,50 +1,37 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>どこ・何食べようか</title>
-</head>
-<body>
-    <header>
-      <nav><a href="/restaurants">新しいレストラン</a></nav>
-      <h1>どこ・何食べようか？</h1></header>
-        <section id="choice">
-          <section id="top">
-            <h1 class="title">おすすめの食べ物</h1>
-            <p class="eat">食べたい料理を思い浮かびませんか？</p>
-            <p>ボタンを押すとランダムに料理をおすすめします！ それを使ってレストランを探してください</p>
-            <button id="random-food">押して</button>
-          </section>
-          <!-- dropdown -->
-          <section id="bottom">
-              <h1 class="title">おすすめのレストラン</h1>
-              <p>行きたいレストランを思い浮かびませんか？</p>
-              <p>食べたい料理を選んだらその料理のレストランのリストが現れます</p>
-              <form action="/pickFood" method="post">
-                <select id="selectFoodType" name="choice">
-                  <!-- Make an array of the food keys -->
-                  <% let foodKeys = [] %>
-                  <% for(let restaurant of data) { %>
-                    <% foodKeys.push(restaurant.food) %>
-                  <% } %>
-                  <!-- Filter the food keys so they don't repeat in the dropdown list -->
-                  <% let uniqueFood = foodKeys.filter((value, index, arr) => { %>
-                     <% return arr.indexOf(value) === index %>
-                  <% }) %>
-                  <!-- Display unique food items in dropdown box -->
-                  <% for (const i in uniqueFood) { %>
-                  <option value="<%= uniqueFood[i] %>"><%= uniqueFood[i] %></option>
-                  <% } %>
-                </select>
-                <input type="submit" value="Submit">
-              </form>
-           
-            </section>
-          
-            
-        </section>
-  <script src="main.js"></script>
-</body>
-</html>
+<%- include('partials/header') -%>
+
+<div class="flex w-full">
+  <div class="grid h-60 w-1/2 flex-grow card bg-emerald-100 rounded-box place-items-center">
+    <h1 class="text-xl">おすすめの食べ物</h1>
+    <p class="eat">食べたい料理を思い浮かびませんか？</p>
+    <p class="border-black">ボタンを押すとランダムに料理をおすすめします！ それを使ってレストランを探してください</p>
+    <button class="cursor-pointer btn btn-outline" id="random-food">押して</button>
+  </div>
+  <div class="divider divider-horizontal">OR</div>
+  <div class="grid h-60 w-1/2 flex-grow card bg-emerald-100 rounded-box place-items-center">
+    <!-- dropdown -->
+    <h1 class="text-xl">おすすめのレストラン</h1>
+    <p>行きたいレストランを思い浮かびませんか？</p>
+    <p>食べたい料理を選んだらその料理のレストランのリストが現れます</p>
+    <form action="/pickFood" method="post">
+      <select id="selectFoodType" name="choice">
+        <!-- Make an array of the food keys -->
+        <% let foodKeys = [] %>
+        <% for(let restaurant of data) { %>
+          <% foodKeys.push(restaurant.food) %>
+        <% } %>
+        <!-- Filter the food keys so they don't repeat in the dropdown list -->
+        <% let uniqueFood = foodKeys.filter((value, index, arr) => { %>
+           <% return arr.indexOf(value) === index %>
+        <% }) %>
+        <!-- Display unique food items in dropdown box -->
+        <% for (const i in uniqueFood) { %>
+        <option value="<%= uniqueFood[i] %>"><%= uniqueFood[i] %></option>
+        <% } %>
+      </select>
+      <input class="cursor-pointer" type="submit" value="Submit">
+    </form>
+  </div>
+</div>        
+<%- include('partials/footer') -%>
+  
