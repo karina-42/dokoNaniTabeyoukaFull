@@ -6,7 +6,7 @@ module.exports = {
     try {
       //get Restaurant data
       const data = await Restaurant.find({})
-      res.render('index.ejs', {data: data})
+      res.render('index.ejs', {title: 'どこ・何食べようか？', data: data})
     } catch (error) {
       console.log(error);
     }
