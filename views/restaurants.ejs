@@ -1,39 +1,41 @@
 <%- include('partials/header') -%>
-
-  <h1>current restaurants</h1>
-  <ul>
-    <% for (let i = 0; i < restaurants.length; i++) {%>
-      <li>
-        <p><%= restaurants[i].name %>, <%= restaurants[i].area %>, <%= restaurants[i].food %></p>
-        <a href="/restaurants/<%= restaurants[i]._id %>">Edit</a> &nbsp; 
-        <a href="/restaurants/deleteRestaurant/<%= restaurants[i]._id %>" onclick="return confirm('Are you sure you wish to delete this?');">Delete</a>
-      </li>
-    <% } %>
-  </ul>
-
-  <div class="mt-5">
-    <h1>Add a restaurant</h1>
-    <!-- put the full path and route for action -->
-    <form action="/restaurants/createRestaurant" method="POST">
-      <div class="mb-3">
-          <label for="title" class="form-label">Restaurant Name</label>
-          <input type="text" class="form-control" id="name" name="name">
-      </div>
-      <div class="mb-3">
-        <label for="caption" class="form-label">Area</label>
-        <textarea class="form-control" id="area" name="area"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="caption" class="form-label">Food</label>
-        <textarea class="form-control" id="food" name="food"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" value="Upload">Submit Restaurant</button>
-    </form>
+<div class="flex w-full">
+  <div class="grid h-auto flex-grow card bg-emerald-100 rounded-box place-items-center">
+    <h1 class="mb-4 text-lg font-semibold">現在に保存されているレストラン</h1>
+    <ul class="p-3">
+      <% for (let i = 0; i < restaurants.length; i++) {%>
+        <li class="mb-3">
+          <p><%= restaurants[i].name %>, <%= restaurants[i].area %>, <%= restaurants[i].food %></p>
+          <a class="text-green-700" href="/restaurants/<%= restaurants[i]._id %>">エディット</a> &nbsp; 
+          <a class="text-red-700" href="/restaurants/deleteRestaurant/<%= restaurants[i]._id %>" onclick="return confirm('本当に消したいですか？');">デリート</a>
+        </li>
+      <% } %>
+    </ul>
   </div>
 
-  <!-- test button -->
-  <!-- <div><form action="/createRestaurant" method="GET">
-    <button type="submit">Submit</button>
-  </form></div> -->
+  <div class="divider divider-horizontal"></div>
+
+  <div class="grid h-auto flex-grow card bg-emerald-100 rounded-box place-items-center">
+    <div class="mt-5">
+      <h1 class="mb-4 text-lg font-semibold">レストランを追加します</h1>
+      <!-- put the full path and route for action -->
+      <form action="/restaurants/createRestaurant" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">レストランの名前</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-3">
+          <label for="caption" class="form-label">どこにあるか</label>
+          <textarea class="form-control" id="area" name="area"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="caption" class="form-label">食べ物の種類</label>
+          <textarea class="form-control" id="food" name="food"></textarea>
+        </div>
+        <button type="submit" class="btn btn-accent" value="Upload">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/footer') -%>
