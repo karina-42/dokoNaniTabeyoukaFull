@@ -1,13 +1,15 @@
 <%- include('partials/header') -%>
 
-  <h2 class="mb-4 p-2 text-lg font-semibold">このリストから選んでください！</h2>
-  <ul class="p-3">
-    <% for (let restaurant of choice) { %>
-    <li>
-      <p><%= restaurant.name %>, <%= restaurant.area %></p>
-    </li>
-  <% } %>
-  </ul>
+  <div class="w-max bg-emerald-100 rounded-box">
+    <h2 class="mb-2 p-2 text-lg font-semibold">このリストから選んでください！</h2>
+    <ul class="p-3">
+      <% for (let restaurant of choice) { %>
+      <li class="mb-3">
+        <p><%= restaurant.name %>, <%= restaurant.area %></p>
+      </li>
+    <% } %>
+    </ul>
+  </div>
   <a href="/" class="text-red-700">違う食べ物食べたい</a>
 
   <%- include('partials/footer') -%>
