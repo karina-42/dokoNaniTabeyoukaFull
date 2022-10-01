@@ -26,7 +26,7 @@ module.exports = {
     try {
       const restaurant = await Restaurant.findById({_id: req.params.id})
       console.log(restaurant.name);
-      res.render('edit', {restaurant: restaurant})
+      res.render('edit', {title: 'エディット',restaurant: restaurant})
     } catch (error) {
       console.log(error);
     }
